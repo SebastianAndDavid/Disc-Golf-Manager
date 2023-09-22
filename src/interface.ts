@@ -27,3 +27,9 @@ export type NewHole = {
     id: number;
     par: number;
 }
+
+export type newScore = {
+    created_at: string;
+    id: number;
+    score: number;
+}
