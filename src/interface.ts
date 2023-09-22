@@ -28,8 +28,13 @@ export type NewHole = {
     par: number;
 }
 
-export type newScore = {
+export type NewScore = {
     created_at: string;
     id: number;
     score: number;
+}
+
+export type NewScorecardRow = {
+    hole_id: number;
+    score_id: number;
 }
