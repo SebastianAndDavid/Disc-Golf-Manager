@@ -1,9 +1,11 @@
 import "./App.css";
-import { getScore } from "./utils/supabase-utils";
+// import { addNewHole, getAll } from "./utils/supabase-utils";
 
 function App() {
-
-  getScore()
+//   let num = 9;
+//   let par = 5;
+// addNewHole({num, par})
+//   getAll()
   return (
     <div>
       <body></body>
