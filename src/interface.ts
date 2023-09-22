@@ -1,40 +1,12 @@
-export type GolfHole = {
-    num: number;
-    par: number;
-}
-
 export type Scorecard = {
-    created_at: string;
-    golfholes: {
-        created_at: string;
-        hole_number: number;
-        id: number;
-        par: number;
-    }
-    hole_id: number;
-    id: number;
-    score_id: number;
-    score: {
-        created_at: string;
-        id: number;
-        score: number;
-    }
-}
-
-export type NewHole = {
+  created_at: string;
+  id: number;
+  scorecard_column: {
     created_at: string;
     hole_number: number;
     id: number;
     par: number;
-}
-
-export type NewScore = {
-    created_at: string;
-    id: number;
     score: number;
-}
-
-export type NewScorecardRow = {
-    hole_id: number;
-    score_id: number;
-}
+    scorecard_id: number;
+  }[];
+};
