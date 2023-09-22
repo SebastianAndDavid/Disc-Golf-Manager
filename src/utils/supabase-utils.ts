@@ -7,10 +7,16 @@ const key =
 
 const supabase = createClient(url, key);
 
-async function getAll(): Promise<Scorecard[] | null> {
-  const res = await supabase.from("scorecard").select(`*, scorecard_column(*)`);
-  console.log(res);
-  return res.data;
+async function getAllScores(): Promise<Scorecard[] | null> {
+  const { data, error } = await supabase
+    .from("scorecard")
+    .select(`*, scorecard_column(*)`);
+  if (error) {
+    console.error("Error fetching data:", error);
+    return null;
+  }
+  console.log(data);
+  return data as Scorecard[];
 }
 
-export { getAll };
+export { getAllScores };

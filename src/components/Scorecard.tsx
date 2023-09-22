@@ -1,20 +1,18 @@
 import { useScoreContext } from "../context/ScoreContext";
 
+import { ScoreContextType } from "../interface";
+
 export interface CountState {
-  count: number;
-  setCount: React.Dispatch<React.SetStateAction<number>>;
+  scores: number;
+  setScores: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export default function Scorecard() {
-  const { count, setCount } = useScoreContext() as CountState;
+  const { handleGetAllScores } = useScoreContext() as ScoreContextType;
 
-  function handleCount() {
-    setCount(count + 1);
-  }
   return (
     <div>
-      <button onClick={() => handleCount()}>Click me</button>
-      {count}
+      <button onClick={() => handleGetAllScores()}>Click me</button>
     </div>
   );
 }

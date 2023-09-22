@@ -1,19 +1,26 @@
 import { createContext, useState, useContext } from "react";
-
-interface ScoreContextType {
-  count?: number;
-  setCount?: React.Dispatch<React.SetStateAction<number>>;
-  children?: React.ReactNode;
-}
+import { getAllScores } from "../utils/supabase-utils";
+import { ScoreContextType, Scorecard } from "../interface";
 
 const ScoreContext = createContext<ScoreContextType | null>(null);
 
 export default function ScoreProvider({ children }: ScoreContextType) {
-  const [count, setCount] = useState(0);
+  const [scores, setScores] = useState<Scorecard[] | null>(null);
+
   const stateAndSetters = {
-    count,
-    setCount,
+    scores,
+    setScores,
+    handleGetAllScores,
   };
+
+  async function handleGetAllScores() {
+    const res: Scorecard[] | null = await getAllScores();
+    if (res) {
+      setScores(res);
+      console.log(scores);
+    }
+  }
+  getAllScores();
   return (
     <ScoreContext.Provider value={stateAndSetters}>
       {children}
