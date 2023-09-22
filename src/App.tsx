@@ -5,10 +5,10 @@ function App() {
 //   let num = 9;
 //   let par = 5;
 // addNewHole({num, par})
+
 //   getAll()
   return (
     <div>
-      <body></body>
     </div>
   );
 }
