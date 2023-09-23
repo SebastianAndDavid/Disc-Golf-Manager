@@ -21,4 +21,10 @@ export interface ScoreContextType {
   // handleGetAllScores: any;
   score: Scorecard[] | null;
   handleGetAllScores: () => Promise<void>;
+  handleInsertScore: (
+    hole_number: number,
+    par: number,
+    score: number,
+    scorecard_id: number
+  ) => Promise<Scorecard[] | null>;
 }

@@ -8,11 +8,11 @@ export interface CountState {
 }
 
 export default function Scorecard() {
-  const { handleGetAllScores } = useScoreContext() as ScoreContextType;
-
+  const { handleGetAllScores, handleInsertScore } = useScoreContext() as ScoreContextType;
   return (
     <div>
       <button onClick={() => handleGetAllScores()}>Click me</button>
+      <button onClick={() => handleInsertScore(2, 4, 4, 1)}>Click me first!</button>
     </div>
   );
 }
