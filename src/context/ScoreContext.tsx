@@ -4,20 +4,20 @@ import { ScoreContextType, Scorecard } from "../interface";
 
 const ScoreContext = createContext<ScoreContextType | null>(null);
 
-export default function ScoreProvider({ children }: ScoreContextType) {
-  const [scores, setScores] = useState<Scorecard[] | null>(null);
+export default function ScoreProvider({ children }: { children: React.ReactNode }) {
+  const [score, setScore] = useState<Scorecard[] | null>(null);
 
   const stateAndSetters = {
-    scores,
-    setScores,
+    score,
+    setScore,
     handleGetAllScores,
   };
 
   async function handleGetAllScores() {
     const res: Scorecard[] | null = await getAllScores();
     if (res) {
-      setScores(res);
-      console.log(scores);
+      setScore(res);
+      console.log(score);
     }
   }
   getAllScores();

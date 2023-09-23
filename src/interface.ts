@@ -13,9 +13,12 @@ export interface Scorecard {
 }
 
 export interface ScoreContextType {
-  scores: number;
-  setScores: React.Dispatch<React.SetStateAction<number>>;
-  children: React.ReactNode;
-  //We need to figure out the type of this
-  handleGetAllScores: any;
+  // score: Scorecard;
+  // //removing this because example code doesn't include stateSetter in type
+  // // setScores: React.Dispatch<React.SetStateAction<number>>;
+  // // children: React.ReactNode;
+  // //We need to figure out the type of this
+  // handleGetAllScores: any;
+  score: Scorecard[] | null;
+  handleGetAllScores: () => Promise<void>;
 }
