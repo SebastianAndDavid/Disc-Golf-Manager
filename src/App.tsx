@@ -1,10 +1,14 @@
 import "./App.css";
+import Scorecard from "./components/Scorecard";
+import ScoreProvider from "./context/ScoreContext";
 
 function App() {
   return (
-    <div>
-      <body></body>
-    </div>
+    <>
+      <ScoreProvider>
+        <Scorecard />
+      </ScoreProvider>
+    </>
   );
 }
 
