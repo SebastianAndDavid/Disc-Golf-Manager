@@ -14,10 +14,7 @@ export default function UserProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [user, setUser] = useState<{
-    user: User | null;
-    session: Session | null;
-  } | null>(null);
+  const [user, setUser] = useState<User>({});
 
   const stateAndSetters = {
     user,
@@ -29,16 +26,16 @@ export default function UserProvider({
   async function handleUserSignUp({ email, password }: UserCredentials) {
     const res: { user: User | null; session: Session | null } =
       await userSignUp({ email, password });
-    if (res) {
-      setUser(res);
+    if (res.user !== null && res.session !== null) {
+      setUser(res.user);
     }
   }
 
   async function handleUserSignIn({ email, password }: UserCredentials) {
     const res: { user: User | null; session: Session | null } =
       await userSignIn({ email, password });
-    if (res) {
-      setUser(res);
+    if (res.user !== null && res.session !== null) {
+      setUser(res.user);
     }
   }
 

@@ -35,7 +35,7 @@ async function getUser() {
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  console.log("user", user);
+  console.log("user getUser", user);
   return user;
 }
 

@@ -22,10 +22,11 @@ export interface ScorecardColumn {
 export interface ScoreContextType {
   score: Scorecard[] | null;
   handleGetAllScores: () => Promise<void>;
-  handleInsertScore: ({
+  handleInsertScorecardColumn: ({
     hole_number,
     par,
     score,
     scorecard_id,
   }: ScorecardColumn) => Promise<Scorecard[] | null>;
+  handleInsertScorecard: (userId: string) => Promise<void>;
 }

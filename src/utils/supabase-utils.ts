@@ -19,7 +19,7 @@ async function getAllScores(): Promise<Scorecard[] | null> {
   return data as Scorecard[];
 }
 
-async function insertScore({
+async function insertScorecardColumn({
   hole_number,
   par,
   score,
@@ -36,4 +36,16 @@ async function insertScore({
   return data as Scorecard[];
 }
 
-export { getAllScores, insertScore };
+async function insertScorecard(userId: string) {
+  const { data, error } = await supabase
+    .from("scorecard")
+    .insert([{ user_id: userId }])
+    .select();
+  if (error) {
+    console.error("Error fetching data:", error);
+    return null;
+  }
+  return data;
+}
+
+export { getAllScores, insertScorecardColumn, insertScorecard };

@@ -11,6 +11,7 @@ export interface User {
 export interface UserContextType {
   handleUserSignUp: ({ email, password }: UserCredentials) => Promise<void>;
   handleUserSignIn: ({ email, password }: UserCredentials) => Promise<void>;
+  user: User;
 }
 
 export interface Session {

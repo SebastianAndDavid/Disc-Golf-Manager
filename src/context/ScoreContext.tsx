@@ -1,5 +1,9 @@
 import { createContext, useState, useContext } from "react";
-import { getAllScores, insertScore } from "../utils/supabase-utils";
+import {
+  getAllScores,
+  insertScorecardColumn,
+  insertScorecard,
+} from "../utils/supabase-utils";
 import {
   ScoreContextType,
   Scorecard,
@@ -19,7 +23,8 @@ export default function ScoreProvider({
     score,
     setScore,
     handleGetAllScores,
-    handleInsertScore,
+    handleInsertScorecardColumn,
+    handleInsertScorecard,
   };
 
   async function handleGetAllScores() {
@@ -29,9 +34,13 @@ export default function ScoreProvider({
     }
   }
 
-  async function handleInsertScore(scoreObj: ScorecardColumn) {
-    const res: Scorecard[] | null = await insertScore(scoreObj);
+  async function handleInsertScorecardColumn(scoreObj: ScorecardColumn) {
+    const res: Scorecard[] | null = await insertScorecardColumn(scoreObj);
     return res;
+  }
+
+  async function handleInsertScorecard(userId: string) {
+    await insertScorecard(userId);
   }
 
   return (
