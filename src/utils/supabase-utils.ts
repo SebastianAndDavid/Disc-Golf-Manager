@@ -24,10 +24,11 @@ async function insertScorecardColumn({
   par,
   score,
   scorecard_id,
+  user_id,
 }: ScorecardColumn) {
   const { data, error } = await supabase
     .from("scorecard_column")
-    .insert([{ hole_number, par, score, scorecard_id }])
+    .insert([{ hole_number, par, score, scorecard_id, user_id }])
     .select();
   if (error) {
     console.error("Error fetching data:", error);

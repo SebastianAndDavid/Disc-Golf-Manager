@@ -12,13 +12,21 @@ export default function Scorecard() {
   } = useScoreContext() as ScoreContextType;
 
   const { user } = useUserContext() as UserContextType;
+
   console.log("user", user);
-  const scoreObj = {
-    hole_number: 1,
-    par: 3,
-    score: 3,
-    scorecard_id: 1,
-  };
+
+  function handleInsertScorecardColumnForReal() {
+    if (user && user.id) {
+      const scoreObj = {
+        hole_number: 1,
+        par: 3,
+        score: 3,
+        scorecard_id: 1,
+        user_id: user.id,
+      };
+      handleInsertScorecardColumn(scoreObj);
+    }
+  }
 
   function handleInsertScorecardForReal() {
     if (user && user.id) {
@@ -32,7 +40,7 @@ export default function Scorecard() {
         Add a scorecard
       </button>
       <button onClick={() => handleGetAllScores()}>Click me</button>
-      <button onClick={() => handleInsertScorecardColumn(scoreObj)}>
+      <button onClick={() => handleInsertScorecardColumnForReal()}>
         Click me first!
       </button>
     </div>

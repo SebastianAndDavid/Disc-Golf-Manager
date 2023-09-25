@@ -17,6 +17,7 @@ export interface ScorecardColumn {
   par: number;
   score: number;
   scorecard_id: number;
+  user_id: string;
 }
 
 export interface ScoreContextType {
