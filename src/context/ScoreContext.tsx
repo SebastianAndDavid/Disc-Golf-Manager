@@ -1,6 +1,10 @@
 import { createContext, useState, useContext } from "react";
 import { getAllScores, insertScore } from "../utils/supabase-utils";
-import { ScoreContextType, Scorecard, ScorecardColumn } from "../interface";
+import {
+  ScoreContextType,
+  Scorecard,
+  ScorecardColumn,
+} from "../interfaces/score-interface";
 
 const ScoreContext = createContext<ScoreContextType | null>(null);
 

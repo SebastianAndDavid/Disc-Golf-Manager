@@ -1,6 +1,6 @@
 import { useScoreContext } from "../context/ScoreContext";
 
-import { ScoreContextType } from "../interface";
+import { ScoreContextType } from "../interfaces/score-interface";
 
 export default function Scorecard() {
   const { handleGetAllScores, handleInsertScore } =

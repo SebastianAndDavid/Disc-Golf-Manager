@@ -1,5 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
-import { Scorecard, ScorecardColumn } from "../interface";
+import { Scorecard, ScorecardColumn } from "../interfaces/score-interface";
 
 const url = "https://wyotgiskxqtlavlkrzle.supabase.co";
 const key =
