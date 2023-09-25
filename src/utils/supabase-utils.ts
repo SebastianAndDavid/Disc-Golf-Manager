@@ -49,4 +49,6 @@ async function insertScorecard(userId: string) {
   return data;
 }
 
+// async function getScore
+
 export { getAllScores, insertScorecardColumn, insertScorecard };
