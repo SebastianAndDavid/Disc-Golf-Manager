@@ -3,8 +3,10 @@ import {
   User,
   UserContextType,
   UserCredentials,
+  dumbInterface,
 } from "../interfaces/user-interface";
 import { userSignUp } from "../utils/supase-users";
+import { Session } from "@supabase/supabase-js";
 
 const UserContext = createContext<UserContextType | null>(null);
 
@@ -13,7 +15,7 @@ export default function UserProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<dumbInterface | null>(null);
 
   const stateAndSetters = {
     user,
@@ -22,7 +24,8 @@ export default function UserProvider({
   };
 
   async function handleUserSignUp({ email, password }: UserCredentials) {
-    const res: User | null = await userSignUp({ email, password });
+    const res: { user: User | null; session: Session | null } =
+      await userSignUp({ email, password });
 
     if (res) {
       setUser(res);

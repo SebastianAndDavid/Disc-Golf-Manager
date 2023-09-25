@@ -4,11 +4,23 @@ export interface UserCredentials {
 }
 
 export interface User {
-  email: string;
-  id: string;
-  session?: string;
+  email?: string;
+  id?: string;
 }
 
 export interface UserContextType {
-  handleUserSignUp: ({ email, password }: UserCredentials) => Promise<void>;
+  handleUserSignUp: ({
+    email,
+    password,
+  }: UserCredentials) => Promise<User | null>;
 }
+
+export interface Session {
+  access_token?: string;
+  refresh_token?: string;
+  token_type?: string;
+  expires_in?: number;
+  user?: User | null;
+}
+
+export interface dumbInterface extends Session {}
