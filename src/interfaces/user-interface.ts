@@ -10,6 +10,7 @@ export interface User {
 
 export interface UserContextType {
   handleUserSignUp: ({ email, password }: UserCredentials) => Promise<void>;
+  handleUserSignIn: ({ email, password }: UserCredentials) => Promise<void>;
 }
 
 export interface Session {
@@ -19,5 +20,3 @@ export interface Session {
   expires_in: number;
   user: User | null;
 }
-
-export interface dumbInterface extends Session {}

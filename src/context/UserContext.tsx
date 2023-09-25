@@ -4,7 +4,7 @@ import {
   UserContextType,
   UserCredentials,
 } from "../interfaces/user-interface";
-import { userSignUp } from "../utils/supase-users";
+import { userSignIn, userSignUp } from "../utils/supase-users";
 import { Session } from "@supabase/supabase-js";
 
 const UserContext = createContext<UserContextType | null>(null);
@@ -23,12 +23,20 @@ export default function UserProvider({
     user,
     setUser,
     handleUserSignUp,
+    handleUserSignIn,
   };
 
   async function handleUserSignUp({ email, password }: UserCredentials) {
     const res: { user: User | null; session: Session | null } =
       await userSignUp({ email, password });
+    if (res) {
+      setUser(res);
+    }
+  }
 
+  async function handleUserSignIn({ email, password }: UserCredentials) {
+    const res: { user: User | null; session: Session | null } =
+      await userSignIn({ email, password });
     if (res) {
       setUser(res);
     }
