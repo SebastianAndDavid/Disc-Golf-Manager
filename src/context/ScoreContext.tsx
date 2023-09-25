@@ -1,10 +1,18 @@
 import { createContext, useState, useContext } from "react";
 import { getAllScores, insertScore } from "../utils/supabase-utils";
-import { ScoreContextType, Scorecard } from "../interface";
+import {
+  ScoreContextType,
+  Scorecard,
+  ScorecardColumn,
+} from "../interfaces/score-interface";
 
 const ScoreContext = createContext<ScoreContextType | null>(null);
 
-export default function ScoreProvider({ children }: { children: React.ReactNode }) {
+export default function ScoreProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [score, setScore] = useState<Scorecard[] | null>(null);
 
   const stateAndSetters = {
@@ -18,15 +26,14 @@ export default function ScoreProvider({ children }: { children: React.ReactNode 
     const res: Scorecard[] | null = await getAllScores();
     if (res) {
       setScore(res);
-      console.log(res);
     }
   }
-  
-    async function handleInsertScore(hole_number:number, par: number, score: number, scorecard_id: number) {
-      const res: Scorecard[] | null = await insertScore(hole_number, par, score, scorecard_id)
-      return res;
-      }
-      
+
+  async function handleInsertScore(scoreObj: ScorecardColumn) {
+    const res: Scorecard[] | null = await insertScore(scoreObj);
+    return res;
+  }
+
   return (
     <ScoreContext.Provider value={stateAndSetters}>
       {children}

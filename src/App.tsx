@@ -1,13 +1,18 @@
 import "./App.css";
+import Auth from "./components/Auth";
 import Scorecard from "./components/Scorecard";
 import ScoreProvider from "./context/ScoreContext";
+import UserProvider from "./context/UserContext";
 
 function App() {
   return (
     <>
-      <ScoreProvider>
-        <Scorecard />
-      </ScoreProvider>
+      <UserProvider>
+        <ScoreProvider>
+          <Auth />
+          <Scorecard />
+        </ScoreProvider>
+      </UserProvider>
     </>
   );
 }

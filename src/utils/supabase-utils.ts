@@ -1,5 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
-import { Scorecard } from "../interface";
+import { Scorecard, ScorecardColumn } from "../interfaces/score-interface";
 
 const url = "https://wyotgiskxqtlavlkrzle.supabase.co";
 const key =
@@ -19,10 +19,18 @@ async function getAllScores(): Promise<Scorecard[] | null> {
   return data as Scorecard[];
 }
 
-async function insertScore(hole_number: number, par: number, score: number, scorecard_id: number) {
-  const {data, error} = await supabase.from('scorecard_column').insert([{hole_number, par, score, scorecard_id}]).select()
+async function insertScore({
+  hole_number,
+  par,
+  score,
+  scorecard_id,
+}: ScorecardColumn) {
+  const { data, error } = await supabase
+    .from("scorecard_column")
+    .insert([{ hole_number, par, score, scorecard_id }])
+    .select();
   if (error) {
-    console.error('Error fetching data:', error)
+    console.error("Error fetching data:", error);
     return null;
   }
   return data as Scorecard[];
