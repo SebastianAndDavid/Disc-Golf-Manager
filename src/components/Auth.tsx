@@ -1,5 +1,6 @@
 import { useUserContext } from "../context/UserContext";
 import { UserContextType } from "../interfaces/user-interface";
+import { getUser, userLogOut } from "../utils/supase-users";
 
 export default function Auth() {
   const { handleUserSignUp, handleUserSignIn } =
@@ -18,6 +19,8 @@ export default function Auth() {
       <button onClick={() => handleUserSignIn(userObj)}>
         Click for old User
       </button>
+      <button onClick={() => userLogOut()}>logOut</button>
+      <button onClick={() => getUser()}>getUser</button>
     </div>
   );
 }

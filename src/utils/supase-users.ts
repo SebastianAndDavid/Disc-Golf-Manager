@@ -24,7 +24,6 @@ async function userSignIn({ email, password }: UserCredentials) {
     email,
     password,
   });
-  console.log("data", data);
   if (error) {
     throw new Error(error.message);
   } else {
@@ -32,4 +31,18 @@ async function userSignIn({ email, password }: UserCredentials) {
   }
 }
 
-export { userSignUp, userSignIn };
+async function getUser() {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  console.log("user", user);
+  return user;
+}
+
+async function userLogOut() {
+  const { error } = await supabase.auth.signOut();
+
+  return error;
+}
+
+export { userSignUp, userSignIn, userLogOut, getUser };

@@ -48,7 +48,7 @@ export default function UserProvider({
     </UserContext.Provider>
   );
 }
-
+// eslint-disable-next-line react-refresh/only-export-components
 export function useUserContext() {
   return useContext(UserContext);
 }
