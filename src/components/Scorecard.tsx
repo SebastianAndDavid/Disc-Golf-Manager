@@ -17,9 +17,9 @@ export default function Scorecard() {
   const { user } = useUserContext() as UserContextType;
 
   const [scorecard_id, setScorecard_id] = useState<number | null>(null);
-  console.log("user", user);
-  console.log("score", score);
-  console.log("scorecard_id", scorecard_id);
+  // console.log("user", user);
+  // console.log("score", score);
+  // console.log("scorecard_id", scorecard_id);
 
   function handleInsertScorecardColumnForReal() {
     if (user && user.id && scorecard_id !== null) {

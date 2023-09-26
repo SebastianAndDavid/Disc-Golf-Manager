@@ -12,6 +12,8 @@ export interface UserContextType {
   handleUserSignUp: ({ email, password }: UserCredentials) => Promise<void>;
   handleUserSignIn: ({ email, password }: UserCredentials) => Promise<void>;
   user: User;
+  currentUser: boolean;
+  setCurrentUser: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface Session {

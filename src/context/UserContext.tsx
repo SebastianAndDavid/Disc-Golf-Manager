@@ -15,10 +15,13 @@ export default function UserProvider({
   children: React.ReactNode;
 }) {
   const [user, setUser] = useState<User>({});
+  const [currentUser, setCurrentUser] = useState(false);
 
   const stateAndSetters = {
     user,
     setUser,
+    currentUser,
+    setCurrentUser,
     handleUserSignUp,
     handleUserSignIn,
   };
