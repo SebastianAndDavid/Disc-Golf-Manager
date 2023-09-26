@@ -45,9 +45,9 @@ export default function Scorecard() {
       <button onClick={() => handleInsertScorecardForReal()}>
         Add a scorecard
       </button>
-      <button onClick={() => handleGetAllScores()}>Click me</button>
+      <button onClick={() => handleGetAllScores()}>Get All Scores</button>
       <button onClick={() => handleInsertScorecardColumnForReal()}>
-        Click me first!
+        Add Scorecard Column
       </button>
       {score?.map((single, i) => {
         return (

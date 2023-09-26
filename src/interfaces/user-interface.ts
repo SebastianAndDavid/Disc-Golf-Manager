@@ -9,11 +9,21 @@ export interface User {
 }
 
 export interface UserContextType {
-  handleUserSignUp: ({ email, password }: UserCredentials) => Promise<void>;
-  handleUserSignIn: ({ email, password }: UserCredentials) => Promise<void>;
+  handleUserSignUp: (
+    { email, password }: UserCredentials,
+    e: React.FormEvent<HTMLFormElement>
+  ) => Promise<void>;
+  handleUserSignIn: (
+    { email, password }: UserCredentials,
+    e: React.FormEvent<HTMLFormElement>
+  ) => Promise<void>;
   user: User;
   currentUser: boolean;
   setCurrentUser: React.Dispatch<React.SetStateAction<boolean>>;
+  email: string;
+  setEmail: React.Dispatch<React.SetStateAction<string>>;
+  password: string;
+  setPassword: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface Session {
