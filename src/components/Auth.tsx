@@ -14,25 +14,25 @@ export default function Auth() {
     setPassword,
   } = useUserContext() as UserContextType;
 
-  // const userObj = {
-  //   email: "tett1233334526@test.com",
-  //   password: "123456",
-  // };
+  async function handleSignInSubmit(e: React.FormEvent<HTMLFormElement>) {
+    await handleUserSignIn({ email, password }, e);
+    setEmail("");
+    setPassword("");
+  }
+
+  async function handleSignUpSubmit(e: React.FormEvent<HTMLFormElement>) {
+    await handleUserSignUp({ email, password }, e);
+    setEmail("");
+    setPassword("");
+  }
 
   return (
     <div>
-      {/* <button onClick={() => handleUserSignUp(userObj)}>
-        Click for New User
-      </button> */}
-      {/* <button onClick={() => handleUserSignIn(userObj)}>
-        Click for old User
-      </button> */}
       <button onClick={() => userLogOut()}>logOut</button>
       <button onClick={() => getUser()}>getUser</button>
-
       {currentUser ? (
         <div>
-          <form onSubmit={(e) => handleUserSignIn({ email, password }, e)}>
+          <form onSubmit={(e) => handleSignInSubmit(e)}>
             <h3>Sign In</h3>
             <label>
               Email
@@ -58,7 +58,7 @@ export default function Auth() {
         </div>
       ) : (
         <div>
-          <form onSubmit={(e) => handleUserSignUp({ email, password }, e)}>
+          <form onSubmit={(e) => handleSignUpSubmit(e)}>
             <h3>Sign Up</h3>
             <label>
               Email
