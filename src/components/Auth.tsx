@@ -5,7 +5,7 @@ export default function Auth() {
   const { handleUserSignUp } = useUserContext() as UserContextType;
 
   const userObj = {
-    email: "test123456@test.com",
+    email: "test1233334526@test.com",
     password: "123456",
   };
 

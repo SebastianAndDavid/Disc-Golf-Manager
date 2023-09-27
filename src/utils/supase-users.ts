@@ -12,6 +12,7 @@ async function userSignUp({ email, password }: UserCredentials) {
     email,
     password,
   });
+  console.log("data", data);
   if (error) {
     throw new Error(error.message);
   } else {
